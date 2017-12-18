@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="42" id="TuM-II-Kk2" customClass="FollowerTableViewCell" customModule="VKDesign_11September_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TuM-II-Kk2" id="Wnj-S9-GUw">
+                <rect key="frame" x="0.0" y="0.0" width="326" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-jw-4cf">
+                        <rect key="frame" x="67" y="15" width="84" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZvE-pj-qYS">
+                        <rect key="frame" x="8" y="3" width="51" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="gC1-Ff-9Gn"/>
+                            <constraint firstAttribute="width" constant="51" id="tp9-8h-gNc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" text="surnameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipj-yR-782">
+                        <rect key="frame" x="154" y="15" width="96" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcb-7r-u4c">
+                        <rect key="frame" x="293" y="12" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="Ptc-rX-aCw"/>
+                            <constraint firstAttribute="height" constant="25" id="xdJ-ar-uhv"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wcb-7r-u4c" firstAttribute="trailing" secondItem="Wnj-S9-GUw" secondAttribute="trailingMargin" id="4Co-qZ-mXK"/>
+                    <constraint firstItem="1N6-jw-4cf" firstAttribute="leading" secondItem="ZvE-pj-qYS" secondAttribute="trailing" constant="8" symbolic="YES" id="7Zd-eX-9Rw"/>
+                    <constraint firstItem="ipj-yR-782" firstAttribute="top" secondItem="1N6-jw-4cf" secondAttribute="top" id="D91-hz-8yT"/>
+                    <constraint firstItem="wcb-7r-u4c" firstAttribute="top" secondItem="Wnj-S9-GUw" secondAttribute="top" constant="12" id="Va7-S0-dXq"/>
+                    <constraint firstItem="1N6-jw-4cf" firstAttribute="top" secondItem="Wnj-S9-GUw" secondAttribute="topMargin" constant="7" id="Ye4-8U-YZ1"/>
+                    <constraint firstItem="ZvE-pj-qYS" firstAttribute="leading" secondItem="Wnj-S9-GUw" secondAttribute="leadingMargin" id="ZhS-Jp-6IA"/>
+                    <constraint firstItem="ZvE-pj-qYS" firstAttribute="top" secondItem="Wnj-S9-GUw" secondAttribute="topMargin" constant="-5" id="cYZ-bl-HI0"/>
+                    <constraint firstItem="ipj-yR-782" firstAttribute="leading" secondItem="1N6-jw-4cf" secondAttribute="trailing" constant="3" id="rMc-9Q-xa6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="ZvE-pj-qYS" id="9Mx-nK-lr2"/>
+                <outlet property="nameLabel" destination="1N6-jw-4cf" id="BGw-y5-TBE"/>
+                <outlet property="onlineImageView" destination="wcb-7r-u4c" id="Oo6-6C-nWc"/>
+                <outlet property="surnameLabel" destination="ipj-yR-782" id="wxK-Mj-Ahz"/>
+            </connections>
+            <point key="canvasLocation" x="37" y="194.5"/>
+        </tableViewCell>
+    </objects>
+</document>
