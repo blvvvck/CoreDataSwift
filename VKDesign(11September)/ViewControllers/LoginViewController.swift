@@ -19,9 +19,11 @@ class LoginViewController: UIViewController {
     let adminEmail = "admin"
     var user_password = ""
     var user_email = ""
+    var manager: DataManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        manager = DataManager()
         hideKeyboardWhenTappedAround()
     }
 
@@ -41,7 +43,7 @@ class LoginViewController: UIViewController {
         } else if (passwordTextField.text == "" && emailTextField.text == "") {
             errorLabel.text = errorMessage
         } else if UserRepository.sharedInstance.check(with: user_email, and: user_password) {
-            DataManager.currentUser = UserRepository.sharedInstance.identifyCurrentUser(with: user_email)
+            //DataManager.currentUser = UserRepository.sharedInstance.identifyCurrentUser(with: user_email)
             performSegue(withIdentifier: loginSegueIdentifier, sender: nil)
         }
         else {

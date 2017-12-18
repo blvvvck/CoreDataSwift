@@ -12,7 +12,7 @@ import CoreData
 
 class DataManager: WorkWithDataProtocol {
 
-    var users =  [User]()
+    var users = [User]()
     static var currentUser: User?
     
     let databaseFileName = "vk.sqlite"
@@ -23,34 +23,6 @@ class DataManager: WorkWithDataProtocol {
         
     }()
     
-    lazy var persistentContainer : NSPersistentContainer = {
-       
-        let container = NSPersistentContainer(name: "VKDesign(11September)")
-        
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        
-        if context.hasChanges {
-            
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-        
-    }
-    
     let createNewsTableQuery = "create table news (news_id INTEGER PRIMARY KEY AUTOINCREMENT, news_text TEXT, news_image BLOB, news_likesCount TEXT, news_commentsCount TEXT, news_repostsCount TEXT, news_name TEXT, news_surname TEXT, news_date TEXT, news_user_id INTEGER)"
     let createUsersTableQuery = "create table user (user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name TEXT, user_surname TEXT, user_gender TEXT, user_email TEXT, user_phoneNumber TEXT, user_age TEXT, user_city TEXT, user_password TEXT)"
     
@@ -59,7 +31,7 @@ class DataManager: WorkWithDataProtocol {
     
      init() {
        
-        openDatabase()
+        let _ = openDatabase()
         print("\(createDatabase()) СОЗДАНИЕ")
         print(pathToDatabase)
        
@@ -116,7 +88,7 @@ class DataManager: WorkWithDataProtocol {
         if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "UserRegistration") {
             let user = entity as? UserRegistration
             
-            let context = persistentContainer.viewContext
+            let context = CoreDataManager.instance.persistentContainer.viewContext
         
             let model = User(context: context)
         
@@ -130,9 +102,7 @@ class DataManager: WorkWithDataProtocol {
                 model.password = createdUser.password
                 model.phoneNumber = createdUser.phoneNumber
             }
-            
-            //currentUser = model
-            
+
             do {
                 try context.save()
             } catch {
@@ -142,7 +112,7 @@ class DataManager: WorkWithDataProtocol {
         
         if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "News") {
            
-            let context = persistentContainer.viewContext
+            let context = CoreDataManager.instance.persistentContainer.viewContext
             
             let createdNews = entity as! News
             
@@ -163,16 +133,6 @@ class DataManager: WorkWithDataProtocol {
             news.text = createdNews.text
             news.repostsCount = createdNews.repostsCount
             
-            let request: NSFetchRequest<User> = User.fetchRequest()
-            
-            
-//            do {
-//                let user = try context.fetch(request)
-//                currentUser = user.first
-//            } catch {
-//                print (error.localizedDescription)
-//            }
-//
             DataManager.currentUser?.addToNews(news)
             
             do {
@@ -181,41 +141,6 @@ class DataManager: WorkWithDataProtocol {
                 print(error.localizedDescription)
             }
         }
-        
-//        if database.open() {
-//
-//            if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "News") {
-//                let news = entity as? News
-//                var imageData = Data()
-//
-//
-//                if let createdNews = news {
-//
-//                    if let image = createdNews.image, let createdImageData = UIImageJPEGRepresentation(image, 1) {
-//                        imageData = createdImageData
-//                    }
-//
-//                    let insertSQL = "insert into news (news_text, news_image, news_likesCount, news_commentsCount, news_repostsCount, news_name, news_surname, news_date, news_user_id) VALUES (?, ?, '\(createdNews.likesCount)', '\(createdNews.commentsCount)', '\(createdNews.repostsCount)', '\(createdNews.name)', '\(createdNews.surname)', '\(createdNews.date)', '\(createdNews.user_id)')"
-//                    database.executeUpdate(insertSQL, withArgumentsIn: [createdNews.text ,imageData])
-//                    print("success news")
-//                }
-//
-//            }
-//
-//            if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "UserRegistration") {
-//                let user = entity as? UserRegistration
-//
-//                if let createdUser = user {
-//
-//                    let insertSql = "insert into user (user_name, user_surname, user_gender, user_email, user_phoneNumber, user_age, user_city, user_password) VALUES ('\(createdUser.name)', '\(createdUser.surname)', '\(createdUser.gender)', '\(createdUser.email)', '\(createdUser.phoneNumber)', '\(createdUser.age)', '\(createdUser.city)', '\(createdUser.password)')"
-//                    database.executeUpdate(insertSql, withArgumentsIn: [])
-//                    print("succes user")
-//                }
-//            }
-//
-//
-//
-//        }
     }
     
     func asyncSave<T>(with entity: T, completionBlock: @escaping (Bool) -> ()) where T : NSObject {
@@ -236,18 +161,9 @@ class DataManager: WorkWithDataProtocol {
         
         if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "News") {
 
-            let context = persistentContainer.viewContext
+            let context = CoreDataManager.instance.persistentContainer.viewContext
             let request: NSFetchRequest<User> = User.fetchRequest()
         
-            
-//            do {
-//                let user = try context.fetch(request)
-//                currentUser = user.first
-//            } catch {
-//                print (error.localizedDescription)
-//            }
-            
-            
             var news = Array((DataManager.currentUser?.news)!)
 
             var reallyNews = [News]()
@@ -258,93 +174,8 @@ class DataManager: WorkWithDataProtocol {
             
             dataArray = reallyNews as! [T]
             
-//            let context = persistentContainer.viewContext
-//
-//            let request: NSFetchRequest<User> = User.fetchRequest()
-//
-//            do {
-//                let user = try context.fetch(request)
-//
-//                currentUser?.news
-//
-//                
-//
-//
-//
-//            } catch {
-//                print (error.localizedDescription)
-//            }
-        
-
-            
         }
         
-//        if database.open() {
-//
-//            if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "News") {
-//                let selectSQL = "SELECT * FROM news"
-//
-//                do {
-//
-//                    let result = try database.executeQuery(selectSQL, values: [])
-//
-//                    while result.next() == true {
-//                        guard let result_likes = result.string(forColumn: "news_likesCount"),
-//                        let result_comments = result.string(forColumn: "news_commentsCount"),
-//                        let result_reposts = result.string(forColumn: "news_repostsCount"),
-//                        let result_name = result.string(forColumn: "news_name"),
-//                        let result_surname = result.string(forColumn: "news_surname"),
-//                        let result_date = result.string(forColumn: "news_date"),
-//                        let result_user_id = result.string(forColumn: "news_user_id") else { return nil }
-//
-//                        if let result_text = result.string(forColumn: "news_text") {
-//                            text = result_text
-//                        }
-//
-//                        if let result_image = result.data(forColumn: "news_image") {
-//                            image = UIImage(data: result_image)
-//                        }
-//
-//                        let news = News(text: text, image: image, likesCount: result_likes, commentsCount: result_comments, repostsCount: result_reposts, name: result_name, surname: result_surname, date: result_date, id: UUID().uuidString, user_id: Int (result_user_id)!) as! T
-//
-//                        dataArray.append(news)
-//
-//                    }
-//                }
-//                    catch {
-//                        print("select error news")
-//                    }
-//                }
-//
-//            if (NSStringFromClass(T.self).components(separatedBy: ".")[1] == "UserRegistration") {
-//                let selectSQL = "SELECT * FROM user"
-//
-//                do {
-//
-//                    let result = try database.executeQuery(selectSQL, values: [])
-//
-//                    while result.next() == true {
-//                        guard let result_id = result.string(forColumn: "user_id"),
-//                        let result_name = result.string(forColumn: "user_name"),
-//                        let result_surname = result.string(forColumn: "user_surname"),
-//                        let result_gender = result.string(forColumn: "user_gender"),
-//                        let result_email = result.string(forColumn: "user_email"),
-//                        let result_phoneNumber = result.string(forColumn: "user_phoneNumber"),
-//                        let result_age = result.string(forColumn: "user_age"),
-//                        let result_city = result.string(forColumn: "user_city"),
-//                        let result_password = result.string(forColumn: "user_password") else { return nil }
-//
-//                        let user = UserRegistration(id: Int(result_id)!,name: result_name, surname: result_surname, gender: result_gender, email: result_email, phoneNumber: result_phoneNumber, age: result_age, city: result_city, password: result_password) as! T
-//
-//                        dataArray.append(user)
-//                    }
-//                }
-//                catch {
-//                    print("select error user")
-//                }
-//            }
-//
-//            }
             return dataArray
         }
     

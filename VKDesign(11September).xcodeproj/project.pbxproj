@@ -68,6 +68,7 @@
 		95EB12A41FE6A60300BDEB96 /* UserNews+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EB12A01FE6A60300BDEB96 /* UserNews+CoreDataProperties.swift */; };
 		95EB12A51FE6A60300BDEB96 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EB12A11FE6A60300BDEB96 /* User+CoreDataClass.swift */; };
 		95EB12A61FE6A60300BDEB96 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EB12A21FE6A60300BDEB96 /* User+CoreDataProperties.swift */; };
+		95F3155A1FE858B300F449F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F315591FE858B300F449F1 /* CoreDataManager.swift */; };
 		95F610591F786716001F71A4 /* InformationViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F610581F786716001F71A4 /* InformationViewModelItem.swift */; };
 		95FFC44E1F9CD5E0008F224D /* AboutUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFC44C1F9CD5E0008F224D /* AboutUserCollectionViewCell.swift */; };
 		95FFC44F1F9CD5E0008F224D /* AboutUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FFC44D1F9CD5E0008F224D /* AboutUserCollectionViewCell.xib */; };
@@ -139,6 +140,7 @@
 		95EB12A01FE6A60300BDEB96 /* UserNews+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserNews+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		95EB12A11FE6A60300BDEB96 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		95EB12A21FE6A60300BDEB96 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		95F315591FE858B300F449F1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		95F610581F786716001F71A4 /* InformationViewModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModelItem.swift; sourceTree = "<group>"; };
 		95FFC44C1F9CD5E0008F224D /* AboutUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		95FFC44D1F9CD5E0008F224D /* AboutUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUserCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				955691BD1FA7716A009DFC50 /* TapToHideKeyboard.swift */,
 				955691C11FA7798B009DFC50 /* UserRepository.swift */,
 				953C9B841FCC59B60052251F /* DataManager.swift */,
+				95F315591FE858B300F449F1 /* CoreDataManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				95FFC4521F9CFF59008F224D /* UserPhotoCollectionViewCell.swift in Sources */,
 				954445AF1F786836000C1F5E /* InformationViewModelStatusItem.swift in Sources */,
 				9523E8D11F66D516000DC924 /* AppDelegate.swift in Sources */,
+				95F3155A1FE858B300F449F1 /* CoreDataManager.swift in Sources */,
 				95BB96491F9E7BBA004AD3F3 /* GiftCollectionViewCell.swift in Sources */,
 				954445B61F786930000C1F5E /* InformationViewModelCarierItem.swift in Sources */,
 				953E59491F76FF0000418F1F /* CarierTableViewCell.swift in Sources */,
